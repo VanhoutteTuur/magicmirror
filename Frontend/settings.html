@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Magic Mirror</title>
+	<link rel="stylesheet" href="style/normalize.css">
+	<link rel="stylesheet" href="style/main.css" />
+	<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"
+			integrity="sha256-yr4fRk/GU1ehYJPAs8P4JlTgu0Hdsp4ZKrx8bDEDC3I="
+			crossorigin="anonymous"></script>
+	<script src="script/dataHandler.js"></script>
+	<script src="script/index.js"></script>
+	<script src="script/settings.js"></script>
+</head>
+
+<body>
+	<div class="c-sidenav">
+		<a
+		   href="javascript:void(0)"
+		   class="c-sidenav__closebtn"
+		   onclick="closeNav()">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 352 512">
+				<path
+					  d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z" />
+			</svg>
+		</a>
+		<a class="c-sidenav__link" href="index.html">Data</a>
+		<a class="c-sidenav__link" href="timer.html">Timers</a>
+		<a class="c-sidenav__link" href="alarms.html">Alarms</a>
+		<a class="c-sidenav__link" href="settings.html">Settings</a>
+		<a class="c-sidenav__link" href="todo.html">Todolist</a>
+	</div>
+	<header class="o-row o-row--header">
+		<div class="o-container o-container--header">
+			<div class="c-header">
+				<div>
+					<h1 class="c-header__logo">Magic Mirror</h1>
+				</div>
+
+				<div class="c-header__nav">
+					<nav class="c-nav">
+						<ul class="o-list c-nav__list">
+							<li class="c-nav__item">
+								<a href="index.html" class="c-nav__link">Data</a>
+							</li>
+							<li class="c-nav__item">
+								<a href="timer.html" class="c-nav__link">Timer</a>
+							</li>
+							<li class="c-nav__item">
+								<a href="alarms.html" class="c-nav__link">Alarms</a>
+							</li>
+							<li class="c-nav__item c-nav__item--current">
+								<a href="settings.html" class="c-nav__link">Settings</a>
+							</li>
+							<li class="c-nav__item">
+								<a href="todo.html" class="c-nav__link">Todolist</a>
+							</li>
+						</ul>
+					</nav>
+					<nav class="c-nav--mobile">
+						<a
+						   href="javascript:void(0)"
+						   class="js-navbutton"
+						   onclick="openNav()"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+								<path
+									  d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z" />
+							</svg>
+						</a>
+					</nav>
+				</div>
+			</div>
+		</div>
+	</header>
+	<section class="o-row">
+		<div class="o-container">
+			<div class="c-content u-max-width--md">
+				<div class="c-setting">
+					<div class="c-setting__row c-setting__row--button">
+						<h3>Users</h3>
+						<button onclick="location.href='/users.html';" class="c-button c-button--round c-button--sm">
+							<svg class="u-icon--xs u-fill--white" xmlns="http://www.w3.org/2000/svg"
+								 viewBox="0 0 512 512">
+								<path
+									  d="M290.74 93.24l128.02 128.02-277.99 277.99-114.14 12.6C11.35 513.54-1.56 500.62.14 485.34l12.7-114.22 277.9-277.88zm207.2-19.06l-60.11-60.11c-18.75-18.75-49.16-18.75-67.91 0l-56.55 56.55 128.02 128.02 56.55-56.55c18.75-18.76 18.75-49.16 0-67.91z" />
+							</svg>
+						</button>
+					</div>
+
+					<div class="c-setting__row">
+						<label for="changeUser">Change current user:</label>
+						<select onchange="changeUser(this)" name="changeUser" id="changeUser"></select>
+					</div>
+				</div>
+				<div class="c-setting">
+					<h3>Volume</h3>
+					<div class="c-setting__row">
+						<label for="changeVolume">Change global volume:</label>
+						<div class="c-setting__row">
+							<input type="number" name="changeVolume" id="changeVolume" min=0 max=50>
+							<button onclick="changeVolume()" class="c-button">Apply</button>
+						</div>
+					</div>
+				</div>
+				<div class="c-setting">
+					<h3>News</h3>
+					<div class="c-setting__row">
+						<label for="newsBtn">Edit newssources:</label>
+						<button name="newsBtn" onclick="location.href='/news.html';" class="c-button">Edit</button>
+					</div>
+
+				</div>
+			</div>
+	</section>
+</body>
+
+</html>

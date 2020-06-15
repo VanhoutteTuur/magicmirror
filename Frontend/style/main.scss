@@ -1,0 +1,733 @@
+// Colors
+
+$color-lightgrey: #e1e5e6;
+$color-grey: #aab1b3;
+$color-darkgrey: #010a0d;
+$color-background: #f5f9fa;
+
+$color-blue: #3345ff;
+$color-lightblue: #6673ff;
+$color-darkblue: #0f1b99;
+
+$color-green: #12b363;
+$color-lightgreen: #2ee68a;
+$color-darkgreen: #0d8046;
+
+$color-red: #e64b17;
+
+// Breakpoints
+// $breakpoint: min-width px;
+$breakpoint-small: 330px;
+$breakpoint-tablet: 768px;
+$breakpoint-tablet-landscape: 1024px;
+$breakpoint-desktop: 1440px;
+
+// Fonts
+@import "fonts";
+
+/* ************* */
+/*      TAGS     */
+/* ************* */
+* {
+    font-family: Roboto, Helvetica, arial, sans-serif !important;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 29px;
+}
+
+html {
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+h1,
+h2,
+h3 {
+    font-weight: 700;
+}
+
+h1 {
+    font-size: 36px;
+    line-height: 48px;
+    margin: 0 0 12px;
+}
+
+h2 {
+    font-size: 32px;
+    line-height: 40px;
+    margin: 0 0 24px;
+}
+
+h3 {
+    font-size: 26px;
+    line-height: 32px;
+    margin: 0 0 24px;
+}
+
+h4,
+h5,
+h6 {
+    font-size: 20px;
+    line-height: 24px;
+    margin: 0 0 24px;
+}
+
+p,
+ol,
+ul,
+dl,
+table,
+address,
+figure {
+    margin: 0 0 24px;
+    //margin: 0;
+}
+
+ul,
+ol {
+    padding-left: 24px;
+}
+
+li ul,
+li ol {
+    margin-bottom: 0;
+}
+
+blockquote {
+    font-style: normal;
+    font-size: 23px;
+    line-height: 32px;
+    margin: 0 0 24px;
+}
+
+blockquote * {
+    font-size: inherit;
+    line-height: inherit;
+}
+
+figcaption {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    margin-top: 8px;
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background: LightGrey;
+    margin: 0 0 24px;
+}
+
+a {
+    transition: all 0.1s ease-in-out;
+
+    &:visited,
+    &:active {
+    }
+
+    &:hover,
+    &:focus {
+    }
+}
+select {
+    //padding: 4px;
+    box-shadow: 0px 5px 10px 0 $color-grey;
+}
+
+// inputs
+input[type="number"] {
+    margin-right: 16px;
+    max-width: 64px;
+}
+
+input[type="color"] {
+    visibility: hidden;
+}
+
+/* ************* */
+/*    OBJECTS    */
+/* ************* */
+
+.o-row {
+    position: relative;
+    padding: 24px 24px 0;
+    display: flow-root;
+    background-color: $color-background;
+
+    @media (min-width: $breakpoint-tablet) {
+        background-color: white;
+    }
+
+    &--header {
+        padding: 0;
+        background-color: $color-blue;
+        box-shadow: 0px 3px 10px $color-grey;
+        z-index: 10;
+    }
+}
+
+.o-container {
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    max-width: 75em; /* 75 * 16px = 1200px */
+    background-color: $color-background;
+
+    &--header {
+        background-color: $color-blue;
+    }
+}
+
+.o-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* ************* */
+/*   COMPONENTS  */
+/* ************* */
+
+.c-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+
+    &__logo {
+        margin: 0px;
+        padding: 4px 16px;
+    }
+
+    &__nav {
+        // display: none;
+    }
+
+    @media (min-width: $breakpoint-tablet) {
+        &__nav {
+            display: flex;
+            flex-grow: 1;
+            justify-content: end;
+        }
+    }
+}
+
+.c-nav {
+    font-size: 16px;
+    line-height: 24px;
+    height: 100%;
+    display: none;
+
+    &__item {
+        &--current {
+            background-color: $color-darkblue;
+        }
+
+        &:hover,
+        &:focus {
+            background-color: $color-lightblue;
+        }
+    }
+
+    &__link {
+        text-decoration: none;
+        font-weight: 500;
+        padding: 8px;
+    }
+
+    &__link,
+    &__link:visited,
+    &__link:active {
+        color: white;
+    }
+
+    &__link:hover,
+    &__link:focus {
+    }
+
+    &--mobile {
+        display: inline-block;
+        width: 24px;
+        padding: 8px 16px 0 16px;
+        // make svg white
+        filter: brightness(0) invert(1);
+    }
+
+    @media (min-width: $breakpoint-tablet) {
+        display: block;
+
+        &__item {
+            padding: 16px 20px;
+        }
+
+        &__list {
+            display: flex;
+            align-content: center;
+        }
+
+        &__link {
+            padding: 8px 0;
+        }
+
+        &--mobile {
+            display: none;
+        }
+    }
+}
+
+.c-sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 10000;
+    top: 0;
+    right: 0;
+    background-color: $color-darkblue;
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 60px; /* Place content 60px from the top */
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+
+    &__link {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 16px;
+        margin: 20px 0;
+        text-decoration: none;
+        font-size: 28px;
+        font-weight: 500;
+        color: white;
+        transition: 0.3s;
+    }
+
+    &__closebtn {
+        margin: 0;
+        padding: 8px 16px 0 16px;
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 24px;
+        filter: brightness(0) invert(1);
+    }
+
+    @media (min-width: $breakpoint-tablet) {
+        display: none;
+    }
+}
+
+.c-content {
+    margin: 0 auto;
+    padding: 0;
+    padding-bottom: 48px;
+
+    @media (min-width: $breakpoint-tablet) {
+        padding: 16px;
+        padding-bottom: 48px;
+    }
+}
+
+// current temp
+.c-temperature {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+//chart
+
+.c-chart {
+    position: relative;
+    margin: auto;
+    margin-top: 24px;
+    height: 50vh;
+
+    @media (min-width: $breakpoint-tablet) {
+        height: 60vh;
+    }
+}
+
+// timer
+.c-timer {
+    height: 100%;
+    width: 100%;
+    margin: auto;
+    text-align: center;
+    position: relative;
+
+    // all children are seperated by 24px whitespace
+    & > * {
+        padding-bottom: 24px;
+    }
+
+    // the time at the top
+    &__time > span {
+        display: inline-block;
+        font-size: 38px;
+        font-weight: 500;
+        line-height: 46px;
+    }
+
+    // the buttons
+    &__buttons {
+    }
+}
+
+/* Sets the containers height and width */
+.c-countdown {
+    position: relative;
+    margin: auto;
+
+    /* Removes SVG styling that would hide the time label */
+    &__circle {
+        fill: none;
+        stroke: none;
+    }
+
+    &__label {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 52px;
+
+        @media (max-width: $breakpoint-small) {
+            font-size: 32px;
+        }
+    }
+
+    /* The SVG path that displays the timer's progress */
+    &__path-elapsed {
+        stroke-width: 1px;
+        stroke: $color-darkblue;
+    }
+
+    &__path-remaining {
+        stroke-width: 3px;
+        stroke-linecap: round;
+        stroke: $color-blue;
+
+        // start animation at top of circle
+        transform: rotate(90deg);
+        transform-origin: center;
+        transition: all 1s linear;
+    }
+
+    &__svg {
+        // Flips the svg and makes the animation to move left-to-right
+        transform: scaleX(-1);
+    }
+
+    &__buttons {
+        display: flex;
+        justify-content: center;
+    }
+}
+
+.c-buttonrow {
+    padding: 0;
+    margin: 0;
+}
+
+.c-button {
+    cursor: pointer;
+    background-color: $color-darkgreen;
+    border: none;
+    color: white;
+    text-transform: uppercase;
+    text-align: center;
+    text-decoration: none;
+    font-weight: 500;
+    display: inline-block;
+    box-shadow: 0px 6px 6px $color-grey;
+    border-radius: 2px;
+
+    &--round {
+        font-size: 28px;
+        font-weight: 700;
+        line-height: 28px;
+        margin: 0 14px 28px 14px;
+        border-radius: 50%;
+        height: 56px;
+        width: 56px;
+    }
+    
+    // for displaying timer buttons on very thin screens
+    @media (max-width: $breakpoint-small) {
+        margin: 0 8px 28px 8px;
+    }
+
+    &--bottom {
+        position: fixed;
+        padding: 0;
+        margin: auto;
+        left: 50%;
+        bottom: 24px;
+        z-index: 1;
+        transform: translateX(-50%);
+    }
+
+    &:active {
+        background-color: $color-green;
+    }
+
+    &--sm {
+        width: 32px;
+        height: 32px;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 16px;
+        margin: 0;
+        //padding: 4px;
+        box-shadow: 0 4px 4px $color-grey;
+    }
+
+    &--xs {
+        width: 24px;
+        height: 24px;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 14px;
+        margin: 0;
+        padding: 2px;
+        box-shadow: 0 2px 2px $color-grey;
+    }
+
+    &[data-checked="0"] {
+        border: 1px solid $color-darkgreen;
+        background-color: white;
+        color: $color-darkgreen;
+    }
+
+    &--red {
+        background-color: $color-red;
+    }
+}
+
+// box component
+.c-box {
+    margin: 8px auto;
+    box-shadow: 0 6px 6px $color-grey;
+    background-color: white;
+
+    &__row {
+        padding: 16px;
+        display: flex;
+        justify-content: space-between;
+        align-content: center;
+        flex-wrap: wrap;
+    }
+
+    &__title {
+        font-size: 28px;
+        font-weight: 500;
+        line-height: 29px;
+    }
+
+    &__subtitle {
+        font-size: 19px;
+        font-weight: 400;
+    }
+
+    // Weekdays
+    &__days {
+        & > button:not(:nth-last-child(1)) {
+            margin-right: 8px;
+        }
+    }
+
+    &__editBtns {
+        display: flex;
+        justify-content: space-between;
+
+        & > * {
+            margin-left: 8px;
+        }
+    }
+}
+
+// The switch - the box around the slider
+.c-switch {
+    position: relative;
+    display: inline-block;
+    width: 37px;
+    height: 20px;
+
+    // Hide default HTML checkbox
+    input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+    }
+
+    // The slider
+    .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: $color-grey;
+        transition: 0.2s;
+        border-radius: 20px;
+
+        // the inside circle
+        &:before {
+            position: absolute;
+            content: "";
+            height: 14px;
+            width: 14px;
+            left: 4px;
+            bottom: 3px;
+            background-color: white;
+            transition: 0.2s;
+            border-radius: 50%;
+        }
+    }
+
+    //
+    input {
+        &:checked + .slider {
+            background-color: $color-darkgreen;
+            &:before {
+                transform: translateX(15px);
+            }
+        }
+
+        &:focus + .slider {
+            box-shadow: 0 0 1px $color-darkgreen;
+        }
+    }
+}
+
+.c-sound {
+    select {
+        //width: 200px;
+    }
+}
+
+.c-cornerBtn {
+    position: fixed;
+    bottom: 16px;
+    right: 16px;
+}
+
+.c-setting {
+    margin: auto;
+    margin-bottom: 24px;
+
+    &__row {
+        display: flex;
+        justify-content: space-between;
+
+        &--button {
+            justify-content: left;
+
+            & > * {
+                margin-right: 24px;
+            }
+        }
+    }
+}
+
+.c-todolist {
+    //display: table;
+    margin: 0 auto;
+    padding: 0;
+
+    &__item {
+        list-style-type: none;
+        margin-bottom: 8px;
+        padding: 8px;
+
+        &:nth-child(odd):not(:nth-last-child(1)) {
+            background-color: $color-lightgrey;
+            border-radius: 8px;
+        }
+
+        // space between text and button
+        & > div {
+            display: flex;
+            justify-content: space-between;
+        }
+    }
+
+    &__input {
+        width: 100%;
+        margin-right: 16px;
+    }
+}
+
+.c-color {
+    height: 24px;
+    width: 24px;
+    background-color: white;
+    border: 1px solid $color-lightgrey;
+    border-radius: 4px;
+    box-shadow: 2px 2px 2px $color-grey;
+
+    &__picker {
+        cursor: pointer;
+    }
+}
+
+/* ************* */
+/*   UTILITIES   */
+/* ************* */
+
+.u-max-width--sm {
+    max-width: 30rem;
+}
+
+.u-max-width--md {
+    max-width: 40rem;
+}
+
+// for svgs
+.u-fill--green {
+    fill: $color-darkgreen;
+}
+
+.u-fill--white {
+    fill: white;
+}
+
+.u-fill--red {
+    fill: $color-red;
+}
+
+// hide
+.u-display--none {
+    display: none !important;
+}
+
+// svg icons
+.u-icon--xs {
+    max-height: 16px;
+    max-width: 16px;
+}
+
+.u-icon--sm {
+    max-height: 24px;
+    max-width: 24px;
+}
+
+.u-icon--md {
+    max-height: 34px;
+    max-width: 34px;
+}
+
+.u-icon--lg {
+    max-height: 48px;
+    max-width: 48px;
+}

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magic Mirror</title>
+    <!-- <link rel="stylesheet" href="style/normalize.css"> -->
+    <link rel="stylesheet" href="style/mirror.css">
+    <script src="script/dataHandler.js"></script>
+    <script src="script/mirror.js"></script>
+</head>
+
+<body>
+    <div class="o-container">
+        <!-- First row: time and weather -->
+        <div class="o-row">
+            <div class="o-row__item c-time ">
+                <div class="c-time__clock js-time"></div>
+                <div class="c-time__date js-date"></div>
+                <div class="js-ip"></div>
+            </div>
+            <div class="o-row__item c-weather">
+                <div class="c-weather__inside">
+                    It's <span class="js-roomtemp"></span>°C inside
+                </div>
+                <div class="c-weather__outside js-weather">
+                    
+                </div>
+                <br>
+                <div class="c-news js-news">
+
+                </div>
+            </div>
+        </div>
+        <!-- Timer is centered-->
+        <div class="o-row o-row--middle c-timer js-timer">
+            <!-- 07:30 -->
+        </div>
+        <!-- Second row: todolist & next alarm -->
+        <div class="o-row o-row--bottom">
+            <div class="o-row__item c-todo">
+                <div class="c-todo__title">
+                    Todo:
+                </div>
+                <ul class="c-todo__items js-todolist">
+                
+                </ul>
+            </div>
+            <div class="o-row__item c-alarms">
+                <div class="c-alarms__title">
+                    Next alarms
+                </div>
+                <div class="c-alarms__next js-alarms">
+
+                </div>
+            </div>
+
+        </div>
+
+
+
+    </div>
+</body>
+
+</html>

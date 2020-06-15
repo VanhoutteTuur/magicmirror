@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Magic Mirror</title>
+	<link rel="stylesheet" href="style/normalize.css">
+	<link rel="stylesheet" href="style/main.css" />
+	<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"
+			integrity="sha256-yr4fRk/GU1ehYJPAs8P4JlTgu0Hdsp4ZKrx8bDEDC3I="
+			crossorigin="anonymous"></script>
+	<script src="script/dataHandler.js"></script>
+	<script src="script/index.js"></script>
+	<script src="script/todo.js"></script>
+</head>
+
+<body>
+	<div class="c-sidenav">
+		<a
+		   href="javascript:void(0)"
+		   class="c-sidenav__closebtn"
+		   onclick="closeNav()">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 352 512">
+				<path
+					  d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z" />
+			</svg>
+		</a>
+		<a class="c-sidenav__link" href="index.html">Data</a>
+		<a class="c-sidenav__link" href="timer.html">Timer</a>
+		<a class="c-sidenav__link" href="alarms.html">Alarms</a>
+		<a class="c-sidenav__link" href="settings.html">Settings</a>
+		<a class="c-sidenav__link" href="todo.html">Todolist</a>
+	</div>
+	<header class="o-row o-row--header">
+		<div class="o-container o-container--header">
+			<div class="c-header">
+				<div>
+					<h1 class="c-header__logo">Magic Mirror</h1>
+				</div>
+
+				<div class="c-header__nav">
+					<nav class="c-nav">
+						<ul class="o-list c-nav__list">
+							<li class="c-nav__item">
+								<a href="index.html" class="c-nav__link">Data</a>
+							</li>
+							<li class="c-nav__item">
+								<a href="timer.html" class="c-nav__link">Timer</a>
+							</li>
+							<li class="c-nav__item">
+								<a href="alarms.html" class="c-nav__link">Alarms</a>
+							</li>
+							<li class="c-nav__item">
+								<a href="settings.html" class="c-nav__link">Settings</a>
+							</li>
+							<li class="c-nav__item c-nav__item--current">
+								<a href="todo.html" class="c-nav__link">Todolist</a>
+							</li>
+						</ul>
+					</nav>
+					<nav class="c-nav--mobile">
+						<a
+						   href="javascript:void(0)"
+						   class="js-navbutton"
+						   onclick="openNav()"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+								<path
+									  d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z" />
+							</svg>
+						</a>
+					</nav>
+				</div>
+			</div>
+		</div>
+	</header>
+	<section class="o-row">
+		<div class="o-container">
+			<div class="c-content">
+				<ul class="c-todolist js-todos u-max-width--sm">
+
+				</ul>
+				<ul class="c-todolist u-max-width--sm">
+					
+				</ul>
+			</div>
+		</div>
+	</section>
+</body>
+
+</html>
